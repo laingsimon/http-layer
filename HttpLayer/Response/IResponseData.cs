@@ -1,4 +1,4 @@
-﻿namespace HttpLayer
+﻿namespace HttpLayer.Response
 {
     public interface IResponseData
     {

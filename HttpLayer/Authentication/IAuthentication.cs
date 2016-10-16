@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace HttpLayer
+namespace HttpLayer.Authentication
 {
     public interface IAuthentication
     {

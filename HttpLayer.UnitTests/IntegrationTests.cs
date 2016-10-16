@@ -2,6 +2,9 @@
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using HttpLayer.Authentication;
+using HttpLayer.Request;
+using HttpLayer.Response;
 
 namespace HttpLayer.UnitTests
 {
@@ -12,7 +15,7 @@ namespace HttpLayer.UnitTests
         public async Task ShouldReturnOk(string absolute, string relative, HttpStatusCode expectedStatus)
         {
             var application = new Application(new Uri(absolute, UriKind.Absolute));
-            var request = new Request(relative)
+            var request = new HttpRequest(relative)
             {
                 Session = new CookieRetainingSession()
             };
@@ -28,7 +31,7 @@ namespace HttpLayer.UnitTests
         {
             var application = new Application(new Uri(absolute, UriKind.Absolute));
             var session = new CookieRetainingSession();
-            var request = new Request(relative)
+            var request = new HttpRequest(relative)
             {
                 Session = session
             };
@@ -45,7 +48,7 @@ namespace HttpLayer.UnitTests
         public async Task ShouldReturnCorrectContent(string absolute, string relative, Type typeOfResponse)
         {
             var application = new Application(new Uri(absolute, UriKind.Absolute));
-            var request = new Request(relative);
+            var request = new HttpRequest(relative);
             var requester = new HttpRequester();
 
             var response = await requester.MakeRequest(request, application);

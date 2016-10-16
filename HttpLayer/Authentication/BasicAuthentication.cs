@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 
-namespace HttpLayer
+namespace HttpLayer.Authentication
 {
     public class BasicAuthentication : IAuthentication
     {

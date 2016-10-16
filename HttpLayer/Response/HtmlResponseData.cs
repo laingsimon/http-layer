@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml.XPath;
 
-namespace HttpLayer
+namespace HttpLayer.Response
 {
     public class HtmlResponseData : IResponseData
     {

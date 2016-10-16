@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace HttpLayer
+namespace HttpLayer.Request
 {
     public class XmlRequestData : PlainTextRequestData
     {

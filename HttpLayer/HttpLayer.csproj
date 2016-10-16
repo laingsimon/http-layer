@@ -50,27 +50,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
-    <Compile Include="BasicAuthentication.cs" />
-    <Compile Include="FormRequestData.cs" />
-    <Compile Include="HtmlResponseData.cs" />
+    <Compile Include="Authentication\BasicAuthentication.cs" />
+    <Compile Include="Request\FormRequestData.cs" />
+    <Compile Include="Response\HtmlResponseData.cs" />
     <Compile Include="HttpRequester.cs" />
-    <Compile Include="IAuthentication.cs" />
-    <Compile Include="IResponseData.cs" />
-    <Compile Include="JsonRequestData.cs" />
-    <Compile Include="JsonResponseData.cs" />
-    <Compile Include="NullAuthentication.cs" />
-    <Compile Include="NullRequestData.cs" />
+    <Compile Include="Authentication\IAuthentication.cs" />
+    <Compile Include="Response\IResponseData.cs" />
+    <Compile Include="Request\JsonRequestData.cs" />
+    <Compile Include="Response\JsonResponseData.cs" />
+    <Compile Include="Authentication\NullAuthentication.cs" />
+    <Compile Include="Request\NullRequestData.cs" />
     <Compile Include="NullSession.cs" />
-    <Compile Include="PlainTextRequestData.cs" />
-    <Compile Include="PlainTextResponseData.cs" />
+    <Compile Include="Request\PlainTextRequestData.cs" />
+    <Compile Include="Response\PlainTextResponseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request.cs" />
-    <Compile Include="IRequestData.cs" />
-    <Compile Include="Response.cs" />
-    <Compile Include="ResponseDataFactory.cs" />
+    <Compile Include="HttpRequest.cs" />
+    <Compile Include="Request\IRequestData.cs" />
+    <Compile Include="HttpResponse.cs" />
+    <Compile Include="Response\ResponseDataFactory.cs" />
     <Compile Include="Session.cs" />
-    <Compile Include="XmlRequestData.cs" />
-    <Compile Include="XmlResponseData.cs" />
+    <Compile Include="Request\XmlRequestData.cs" />
+    <Compile Include="Response\XmlResponseData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

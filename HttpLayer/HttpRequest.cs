@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Net.Http;
+using HttpLayer.Request;
+using HttpLayer.Authentication;
 
 namespace HttpLayer
 {
-    public class Request
+    public class HttpRequest
     {
         private readonly Uri _relativeUri;
 
-        public Request(Uri relativeUri)
+        public HttpRequest(Uri relativeUri)
         {
             _relativeUri = relativeUri;
         }
 
-        public Request(string relativeUri)
+        public HttpRequest(string relativeUri)
         {
             _relativeUri = new Uri(relativeUri, UriKind.Relative);
         }

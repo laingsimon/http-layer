@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace HttpLayer
+namespace HttpLayer.Response
 {
     public interface IResponseDataFactory
     {

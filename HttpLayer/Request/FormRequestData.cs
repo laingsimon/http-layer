@@ -2,13 +2,10 @@
 using System.Linq;
 using System.Web;
 
-namespace HttpLayer
+namespace HttpLayer.Request
 {
     public class FormRequestData : PlainTextRequestData
     {
-        private readonly string _contentType;
-        private readonly NameValueCollection _form;
-
         public FormRequestData(
             NameValueCollection form,
             string contentType = "application/www-form-urlencoded")

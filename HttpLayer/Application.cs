@@ -11,7 +11,7 @@ namespace HttpLayer
             _baseUri = baseUri;
         }
 
-        public Uri GetFullUri(Request request)
+        public Uri GetFullUri(HttpRequest request)
         {
             return new Uri(_baseUri, request.RelativeUri);
         }

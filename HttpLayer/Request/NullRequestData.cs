@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 
-namespace HttpLayer
+namespace HttpLayer.Request
 {
     internal class NullRequestData : IRequestData
     {

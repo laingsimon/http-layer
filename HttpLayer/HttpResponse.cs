@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using HttpLayer.Response;
 
 namespace HttpLayer
 {
-    public class Response
+    public class HttpResponse
     {
         public NameValueCollection Headers { get; internal set; }
         public IResponseData Body { get; internal set; }

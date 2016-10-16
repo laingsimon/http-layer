@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 
-namespace HttpLayer
+namespace HttpLayer.Response
 {
     public class JsonResponseData : IResponseData
     {

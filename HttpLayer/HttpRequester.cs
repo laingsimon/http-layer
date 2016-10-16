@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using HttpLayer.Response;
 
 namespace HttpLayer
 {
@@ -17,7 +18,7 @@ namespace HttpLayer
             _responseDataFactory = responseDataFactory ?? new ResponseDataFactory();
         }
 
-        public async Task<Response> MakeRequest(Request request, Application application)
+        public async Task<HttpResponse> MakeRequest(HttpRequest request, Application application)
         {
             var fullUrl = application.GetFullUri(request);
 
@@ -45,7 +46,7 @@ namespace HttpLayer
             request.Session.AfterResponse(httpResponse);
             request.Authentication.AfterResponse(httpResponse);
 
-            return new Response
+            return new HttpResponse
             {
                 StatusCode = httpResponse.StatusCode,
                 Headers = httpResponse.Headers,

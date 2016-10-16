@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-namespace HttpLayer
+namespace HttpLayer.Request
 {
     public interface IRequestData
     {

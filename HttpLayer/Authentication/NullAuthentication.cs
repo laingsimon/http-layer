@@ -1,7 +1,6 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 
-namespace HttpLayer
+namespace HttpLayer.Authentication
 {
     internal class NullAuthentication : IAuthentication
     {

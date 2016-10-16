@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Net;
+﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace HttpLayer
+namespace HttpLayer.Request
 {
     public class JsonRequestData : PlainTextRequestData
     {
