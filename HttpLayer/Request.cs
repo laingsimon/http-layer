@@ -23,5 +23,6 @@ namespace HttpLayer
         public ISession Session { get; set; } = new NullSession();
         public NameValueCollection Headers { get; set; } = new NameValueCollection();
         public IRequestData Body { get; set; } = new NullRequestData();
+        public IAuthentication Authentication { get; set; } = new NullAuthentication();
     }
 }

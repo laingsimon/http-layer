@@ -49,10 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
+    <Compile Include="BasicAuthentication.cs" />
     <Compile Include="HtmlResponseData.cs" />
     <Compile Include="HttpRequester.cs" />
+    <Compile Include="IAuthentication.cs" />
     <Compile Include="IResponseData.cs" />
     <Compile Include="JsonResponseData.cs" />
+    <Compile Include="NullAuthentication.cs" />
     <Compile Include="NullRequestData.cs" />
     <Compile Include="NullSession.cs" />
     <Compile Include="PlainTextResponseData.cs" />

@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,6 +28,7 @@ namespace HttpLayer
             if (request.Method == HttpMethod.Put || request.Method == HttpMethod.Post)
                 request.Body.PrepareRequest(httpRequest);
 
+            request.Authentication.BeforeRequest(httpRequest);
             request.Session.BeforeRequest(httpRequest);
 
             foreach (var header in request.Headers.AllKeys)
@@ -43,6 +43,7 @@ namespace HttpLayer
             var httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
 
             request.Session.AfterResponse(httpResponse);
+            request.Authentication.AfterResponse(httpResponse);
 
             return new Response
             {
