@@ -41,8 +41,20 @@ namespace HttpLayer
                     request.Body.WriteToRequestStream(requestStream);
             }
 
-            var httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
+            try
+            {
+                var httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
+                return _HandleResponse(request, httpResponse);
+            }
+            catch (WebException exc)
+            {
+                var errorHttpResponse = (HttpWebResponse)exc.Response;
+                return _HandleResponse(request, errorHttpResponse);
+            }
+        }
 
+        private HttpResponse _HandleResponse(HttpRequest request, HttpWebResponse httpResponse)
+        {
             request.Session.AfterResponse(httpResponse);
             request.Authentication.AfterResponse(httpResponse);
 
