@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>HttpLayer</id>
+    <version>1.0.0</version>
+    <title>Http Layer Assembly</title>
+    <authors>Simon Laing</authors>
+    <owners>Simon Laing</owners>
+    <projectUrl>https://github.com/laingsimon/http-layer</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Abstractions over the Http stack allowing for simple HTTP based testing</description>
+    <dependencies>
+      <dependency id="HtmlAgilityPack" version="1.4.9.5" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\HttpLayer*.*" target="lib\net45" />
+  </files>
+</package>
