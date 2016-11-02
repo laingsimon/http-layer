@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpLayer", "HttpLayer.csproj", "{87790CC6-89B6-4CBC-80FA-25375ACF8F82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpLayer", "HttpLayer\HttpLayer.csproj", "{87790CC6-89B6-4CBC-80FA-25375ACF8F82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpLayer.UnitTests", "..\HttpLayer.UnitTests\HttpLayer.UnitTests.csproj", "{CF22CEF2-111C-4C83-B649-092F22E2ABA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpLayer.UnitTests", "HttpLayer.UnitTests\HttpLayer.UnitTests.csproj", "{CF22CEF2-111C-4C83-B649-092F22E2ABA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
