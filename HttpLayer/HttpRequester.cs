@@ -6,23 +6,26 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HttpLayer.Response;
+using HttpLayer.Log;
 
 namespace HttpLayer
 {
     public class HttpRequester
     {
         private readonly IResponseDataFactory _responseDataFactory;
+        private readonly ILog _log;
 
-        public HttpRequester(IResponseDataFactory responseDataFactory = null)
+        public HttpRequester(IResponseDataFactory responseDataFactory = null, ILog log = null)
         {
             _responseDataFactory = responseDataFactory ?? new ResponseDataFactory();
+            _log = log ?? new NullLog();
         }
 
         public async Task<HttpResponse> MakeRequest(HttpRequest request, Application application)
         {
-            var fullUrl = application.GetFullUri(request);
+            var fullUri = application.GetFullUri(request);
 
-            var httpRequest = (HttpWebRequest)WebRequest.Create(fullUrl);
+            var httpRequest = (HttpWebRequest)WebRequest.Create(fullUri);
             httpRequest.Method = request.Method.ToString();
             httpRequest.AllowAutoRedirect = false;
 
@@ -35,26 +38,34 @@ namespace HttpLayer
             foreach (var header in request.Headers.AllKeys)
                 httpRequest.Headers.Add(header, request.Headers[header]);
 
+            _log.WriteInformation($"Making {request.Method} request to {fullUri}", request);
             if (request.Method == HttpMethod.Put || request.Method == HttpMethod.Post)
             {
                 using (var requestStream = await httpRequest.GetRequestStreamAsync())
+                {
+                    _log.WriteInformation($"Writing {request.Body.GetType().Name} to request {fullUri}", request);
                     request.Body.WriteToRequestStream(requestStream);
+                }
             }
 
             try
             {
                 var httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
-                return _HandleResponse(request, httpResponse);
+                return _HandleResponse(request, httpResponse, fullUri);
             }
             catch (WebException exc)
             {
+                _log.WriteWarning($"Error getting response from {fullUri}", request, exc);
+
                 var errorHttpResponse = (HttpWebResponse)exc.Response;
-                return _HandleResponse(request, errorHttpResponse);
+                return _HandleResponse(request, errorHttpResponse, fullUri);
             }
         }
 
-        private HttpResponse _HandleResponse(HttpRequest request, HttpWebResponse httpResponse)
+        private HttpResponse _HandleResponse(HttpRequest request, HttpWebResponse httpResponse, System.Uri fullUri)
         {
+            _log.WriteInformation($"Got response from {fullUri} ({httpResponse.StatusCode}: {httpResponse.ContentType})", request);
+
             request.Session.AfterResponse(httpResponse);
             request.Authentication.AfterResponse(httpResponse);
 
