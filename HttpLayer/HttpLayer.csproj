@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Authentication\BasicAuthentication.cs" />
+    <Compile Include="LoginFirstSession.cs" />
     <Compile Include="Request\FormRequestData.cs" />
     <Compile Include="Response\HtmlResponseData.cs" />
     <Compile Include="HttpRequester.cs" />
