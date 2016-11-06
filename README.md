@@ -8,7 +8,7 @@ A series of abstractions over the .net HTTP types; facilitating simple HTTP leve
 This embodies the base url of the application, and can be extended to contain other application-specific rules for when a request is made.
 
 ## Session
-This option type embodies a session state that can persist between sessions. Commonly this is achieved by logging in and presenting the token provided at login time for all subsequent requests (normally achieved with cookies).
+This optional type embodies a session state that can persist between sessions. Commonly this is achieved by logging in and presenting the token (that was provided at login time) for all subsequent requests (normally achieved with cookies).
 
 ## Request
 This embodies all the properties of a request, i.e.
@@ -27,13 +27,56 @@ This embodies all the properties of a response, i.e.
 Natively the library can handle the following body (request or response) content types
 
 ## Request
-* Form data
-* Json
-* Plain text
-* Xml
+* Form data (`FormRequestData`)
+* Json (`JsonRequestData`)
+* Plain text (`PlainTextRequestData`)
+* Xml (`XmlRequestData`)
 
 ## Response
-* Xml
-* Html
-* Json
-* Plain text
+* Xml (`XmlResponseData`)*
+* Html (`HtmlResponseData`)*
+* Json (`JsonResponseData`)
+* Plain text (`PlainTextResponseData`)
+
+`*` Thes response types support creating a `XPathNavigator` which can help select Html/Xml nodes via XPath.
+
+## Examples
+
+### Make a GET request
+
+```c#
+var application = new Application(new Uri("http://my-application", UriKind.Absolute));
+var request = new HttpRequest("/relative-url/to/resource");
+var requester = new HttpRequester();
+
+var response = await requester.MakeRequest(request, application);
+```
+	
+### Make a POST request
+
+```c#
+var application = new Application(new Uri("http://my-application", UriKind.Absolute));
+var request = new HttpRequest("/relative-url/to/resource")
+{
+	Method = HttpMethod.Post,
+	Body = new PlainTextRequestData("some-body", "text/plain")
+};
+var requester = new HttpRequester();
+
+var response = await requester.MakeRequest(request, application);
+```
+	
+### Using response data
+
+```c#
+var application = new Application(new Uri("http://my-application", UriKind.Absolute));
+var request = new HttpRequest("/relative-url/to/resource");
+var requester = new HttpRequester();
+
+var response = await requester.MakeRequest(request, application);
+
+var json = response.Body as JsonResponseData;
+var result = json.ReadAs<MyObject>();
+```
+	
+For more examples see `HttpLayer.UnitTests/IntegrationTests.cs`
