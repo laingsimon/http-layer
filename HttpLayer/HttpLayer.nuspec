@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>HttpLayer</id>
-    <version>1.0.0</version>
+    <version>$version$</version>
     <title>Http Layer Assembly</title>
     <authors>Simon Laing</authors>
     <owners>Simon Laing</owners>
