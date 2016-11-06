@@ -9,6 +9,7 @@
     <projectUrl>https://github.com/laingsimon/http-layer</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Abstractions over the Http stack allowing for simple HTTP based testing</description>
+	<summary>Abstractions over the Http stack allowing for simple HTTP based testing</summary>
     <dependencies>
       <dependency id="HtmlAgilityPack" version="1.4.9.5" />
       <dependency id="Newtonsoft.Json" version="9.0.1" />
