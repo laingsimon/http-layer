@@ -8,6 +8,9 @@ namespace HttpLayer
 
         public Application(Uri baseUri)
         {
+            if (baseUri == null)
+                throw new ArgumentNullException(nameof(baseUri));
+
             _baseUri = baseUri;
         }
 

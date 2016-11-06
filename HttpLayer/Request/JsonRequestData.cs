@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
+using System;
 
 namespace HttpLayer.Request
 {
@@ -16,6 +17,9 @@ namespace HttpLayer.Request
 
         private static string _SerialiseBody(object body, JsonSerializer serialiser)
         {
+            if (body == null)
+                throw new ArgumentNullException(nameof(body));
+
             using (var writer = new StringWriter())
             {
                 serialiser.Serialize(writer, body);

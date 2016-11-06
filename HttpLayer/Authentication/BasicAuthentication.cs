@@ -11,8 +11,11 @@ namespace HttpLayer.Authentication
 
         public BasicAuthentication(string username, string password)
         {
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException(nameof(username));
+
             _username = username;
-            _password = password;
+            _password = password ?? string.Empty;
         }
 
         public void AfterResponse(HttpWebResponse response)

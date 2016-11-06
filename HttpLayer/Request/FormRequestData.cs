@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,9 @@ namespace HttpLayer.Request
 
         private static string _FormatForm(NameValueCollection form)
         {
+            if (form == null)
+                throw new ArgumentNullException(nameof(form));
+
             return string.Join(
                 "&",
                 form.AllKeys.Select(key => $"{HttpUtility.UrlEncode(key)}={HttpUtility.UrlEncode(form[key])}"));

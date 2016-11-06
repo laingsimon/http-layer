@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HttpLayer.Response;
 using HttpLayer.Log;
+using System;
 
 namespace HttpLayer
 {
@@ -23,6 +24,11 @@ namespace HttpLayer
 
         public async Task<HttpResponse> MakeRequest(HttpRequest request, Application application)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (application == null)
+                throw new ArgumentNullException(nameof(application));
+
             var fullUri = application.GetFullUri(request);
 
             var httpRequest = (HttpWebRequest)WebRequest.Create(fullUri);

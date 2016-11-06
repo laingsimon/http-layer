@@ -12,6 +12,11 @@ namespace HttpLayer
 
         public LoginFirstSession(HttpRequest loginRequest, Application application)
         {
+            if (loginRequest == null)
+                throw new ArgumentNullException(nameof(loginRequest));
+            if (application == null)
+                throw new ArgumentNullException(nameof(application));
+
             _loginRequest = loginRequest;
             _application = application;
             _underlyingSession = new CookieRetainingSession();

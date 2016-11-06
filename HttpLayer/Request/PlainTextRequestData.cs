@@ -10,7 +10,7 @@ namespace HttpLayer.Request
 
         public PlainTextRequestData(string body, string contentType)
         {
-            _body = body;
+            _body = body ?? string.Empty;
             _contentType = contentType;
         }
 

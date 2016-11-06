@@ -12,11 +12,17 @@ namespace HttpLayer
 
         public HttpRequest(Uri relativeUri)
         {
+            if (relativeUri == null)
+                throw new ArgumentNullException(nameof(relativeUri));
+
             _relativeUri = relativeUri;
         }
 
         public HttpRequest(string relativeUri)
         {
+            if (relativeUri == null) //empty string should be allowed, incase the request is for the root of the site
+                throw new ArgumentNullException(nameof(relativeUri));
+
             _relativeUri = new Uri(relativeUri, UriKind.Relative);
         }
 
