@@ -9,7 +9,7 @@ namespace HttpLayer.Request
     {
         public FormRequestData(
             NameValueCollection form,
-            string contentType = "application/www-form-urlencoded")
+            string contentType = "application/x-www-form-urlencoded")
             :base(_FormatForm(form), contentType: contentType)
         { }
 
